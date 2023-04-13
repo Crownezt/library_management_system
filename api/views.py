@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.reverse import reverse_lazy
 from rest_framework.viewsets import ModelViewSet
-
+from django.core.mail import send_mail
 from api.pagination import DefaultPageNumberPagination
 from api.permissions import IsAdminOrReadOnly
 from api.serializers import BookSerializer, BookCreateSerializer, AuthorSerializer, AuthorCreateSerializer, \
@@ -64,6 +64,9 @@ class BookViewSet(ModelViewSet):
 def author_detail(request, pk):
     author = get_object_or_404(Author, pk=pk)
     serializer = AuthorSerializer(author)
+    message = 'Smile, you are rude, very very rude'
+    subject = 'Smile must offer django'
+    send_mail(subject, message, 'adepheranmie@gmail.com', 'helloadewunmi@gmail.com')
     return Response(serializer.data)
 
 # @api_view(['GET', 'POST'])

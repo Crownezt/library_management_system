@@ -50,6 +50,11 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        ordering = ['title']  # ascending order
+        # ordering = ['-title']  # descending order
+
+
 # class Genre(models.Model):
 #     GENRE_CHOICES = [
 #         ('ROMANCE', 'ROM'),
